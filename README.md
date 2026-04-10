@@ -9,7 +9,7 @@ The primary technical achievement was engineering a **Layer 2 bypass** for hyper
 
 ---
 
-## The "Triangle" Architecture
+## The Architecture
 
 ### 1. Networking (The Foundation)
 *   **Gateway:** FortiOS 7.x (FortiGate NGFW) managing the internal gateway (192.168.1.1).
