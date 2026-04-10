@@ -17,6 +17,7 @@ The primary technical achievement was engineering a **Layer 2 bypass** for hyper
 *   **The Technical Fix:** Resolved a "Silent Packet Drop" issue by bridging the virtual lab directly to a physical Ethernet interface (VMnet0). This bypassed VMware’s unicast filtering, allowing the IDS to operate in true Promiscuous Mode.
 
 ![Lab Topology](Lab-Topology.png)
+![VNET Mapping](VNET-Mapping.png)
 ![fortigate port 2 ip](Fortigate-GUI-Port-addressing.png)
 
 ### 2. Systems Administration (The Target)
