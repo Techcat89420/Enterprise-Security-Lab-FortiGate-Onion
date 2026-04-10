@@ -16,22 +16,22 @@ The primary technical achievement was engineering a **Layer 2 bypass** for hyper
 *   **Virtualization:** EVE-NG Professional.
 *   **The Technical Fix:** Resolved a "Silent Packet Drop" issue by bridging the virtual lab directly to a physical Ethernet interface (VMnet0). This bypassed VMware’s unicast filtering, allowing the IDS to operate in true Promiscuous Mode.
 
-![Lab Topology](Lab Topology.png)
-![fortigate port 2 ip](Fortigate GUI Port addressing.png)
+![Lab Topology](Lab-Topology.png)
+![fortigate port 2 ip](Fortigate-GUI-Port-addressing.png)
 
 ### 2. Systems Administration (The Target)
 *   **Endpoint:** Windows 10 Workstation configured with a static IP (`192.168.1.10`).
 *   **Connectivity:** Verified bidirectional flow and MTU alignment across the virtual-to-physical boundary.
 
-![SSH SecurtityOnion Ping Verification](SSH Onion Windows VM Ping Capture.png)
-![Hunt Dashboard Ping Verification](Hunt Dashboard Ping Verification.png)
+![SSH SecurtityOnion Ping Verification](SSH-Onion-Windows-VM-Ping-Capture.png)
+![Hunt Dashboard Ping Verification](Hunt-Dashboard-Ping-Verification.png)
 
 
 ### 3. Cybersecurity (The Oversight)
 *   **Sensor:** Security Onion 2.4 (Suricata/Snort engine).
 *   **Validation:** Successfully triggered and logged signature-based alerts for "GPL ATTACK_RESPONSE" using simulated malicious HTTP traffic (testmyids.com).
 
-![GPLAttack Response Alert](Test My IDS Onion Alert.png)
+![GPLAttack Response Alert](Test-My-IDS-Onion-Alert.png)
 
 ---
 
