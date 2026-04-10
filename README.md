@@ -18,7 +18,7 @@ The primary technical achievement was engineering a **Layer 2 bypass** for hyper
 
 ![Lab Topology](Lab-Topology.png)
 ![VNET Mapping](VNET-Mapping.png)
-![fortigate port 2 ip](Fortigate-GUI-Port-addressing.png)
+![fortigate port 2 ip](FortiGate-GUI-Port-addressing.png)
 
 ### 2. Systems Administration (The Target)
 *   **Endpoint:** Windows 10 Workstation configured with a static IP (`192.168.1.10`).
