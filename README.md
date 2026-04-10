@@ -9,7 +9,7 @@ The primary technical achievement was engineering a **Layer 2 bypass** for hyper
 
 ---
 
-## 📐 The "Triangle" Architecture
+## The "Triangle" Architecture
 
 ### 1. Networking (The Foundation)
 *   **Gateway:** FortiOS 7.x (FortiGate NGFW) managing the internal gateway (192.168.1.1).
@@ -35,10 +35,10 @@ The primary technical achievement was engineering a **Layer 2 bypass** for hyper
 
 ---
 
-## 🛠️ Lessons Learned
+## Lessons Learned
 *   **Hypervisor Limitations:** Learned that virtual switches often drop traffic not destined for the VM's specific MAC address, requiring a physical bridge for IDS mirroring.
 *   **Data Integrity:** Discovered that trial-license software switches can alter packet headers; shifted to a "Shared Segment" architecture to preserve source-IP visibility for the SOC.
 
-## 🚀 Next Steps (Phase 2)
+## Next Steps (Phase 2)
 *   Integrate Active Directory for centralized identity management.
 *   Deploy Sysmon on the Windows endpoint to correlate host logs with network alerts.
