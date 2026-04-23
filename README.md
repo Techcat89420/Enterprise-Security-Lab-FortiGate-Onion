@@ -70,8 +70,8 @@ I utilized CyberChef to decode the UTF-16LE/Base64 payload, revealing the hidden
 
 ![Full Attack Cycle](5-Execution-Correlation.png)
 ![Payload Extraction](6-CyberChef-Payload-Extraction.png)
-![Security Onion Forensic Hunt](7-SecurityOnion-Forensic-Hunt.png)
-![Sysmon Validation](8-Sysmon-Local-Validation.png)
+![Security Onion Forensic Hunt](7-Security-Onion-Forensic-Hunt.png)
+![Sysmon Validation](8-Sysmon-Lopcal-Validation.png)
 
 ---
 
