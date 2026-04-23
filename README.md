@@ -58,7 +58,7 @@ Establishing connectivity was Phase 1; Phase 2 focuses on forcing the OS to reve
 ![AD OU Structure](1-GPO-OU-Link.png)
 ![Advanced Audit Config](2-Advanced-Audit-Config.png)
 ![Subcategory Override](3-Subcategory-Override-Enable.png)
-![CommandLine PowerShell Logging](4-CmdLine-PowerShell-Logging.png)
+![CommandLine PowerShell Logging](04-CmdLine-PowerShell-Logging.png)
 
 ---
 
@@ -78,7 +78,7 @@ I utilized CyberChef to decode the UTF-16LE/Base64 payload, revealing the hidden
 ### 4. Lab Infrastructure (Network Architecture)
 Current topology showing the isolation between the Adversary Enclave (VMnet 1) and the Management DMZ (VMnet 8).
 
-![Network Architecture](9-Network-Architecture-Phase2.png)
+![Network Architecture](09-Network-Architecture-Phase2.png)
 
 ## Lessons Learned & Pivot
 * **Endpoint vs. Network:** When trial-license limits restricted network-layer DPI, I pivoted to Endpoint Attribution (Sysmon/Beats). This confirmed that host-level telemetry often provides higher fidelity for encrypted "East-West" traffic than appliance-level inspection.
