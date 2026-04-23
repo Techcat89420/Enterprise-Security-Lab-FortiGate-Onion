@@ -68,7 +68,7 @@ To test the detection logic, I emulated a "Living off the Land" (LotL) attack us
 **Attack String Analysis:**
 I utilized CyberChef to decode the UTF-16LE/Base64 payload, revealing the hidden C2 download string. This validated that while the adversary utilized obfuscation, the host-level logging captured the cleartext intent.
 
-![Full Attack Cycle](5-Execution-Correlation.png)
+![Full Attack Cycle](5-Execution-Correlation-Cycle.png)
 ![Payload Extraction](6-CyberChef-Payload-Extraction.png)
 ![Security Onion Forensic Hunt](7-Security-Onion-Forensic-Hunt.png)
 ![Sysmon Validation](8-Sysmon-Lopcal-Validation.png)
