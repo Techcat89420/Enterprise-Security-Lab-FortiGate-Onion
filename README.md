@@ -97,6 +97,7 @@ Operational Efficiency: Azure Arc allows for direct VM management from the Azure
 * **Security & Identity: I shifted to Managed Identities for authentication. This "passwordless" approach is more secure and avoided the API key expirations and tenant-mismatch issues encountered with Logstash plugins.
 
 ## Phase 3: Hybrid-Cloud Uplink & SOAR Automation
+![Current Topology](Topology.png)
 
 * **Executive Summary
 Phase 3 moves the lab from monitoring to active defense. By bridging the local EVE-NG environment to Azure Arc, I established a unified command plane. This setup enables global visibility and automated remediation (SOAR) on local hardware in under 60 seconds.
