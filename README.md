@@ -124,3 +124,14 @@ Phase 3 moves the lab from monitoring to active defense. By bridging the local E
  ![KQL-Analytics-Rule](5-KQL-Rule.png)
  ![KQL-Overview](5.1-.png)
  ![Detection Validation](6-Detection.png)
+
+ ### 3. SOAR Orchestration (Remediation)
+ * ** Response Logic: Designed a SOAR Playbook via Azure Logic Apps to close the detection-to-response loop.
+
+ * ** Identity & RBAC: Configured a System-Assigned Managed Identity with Contributor permissions. This secures the command path between Sentinel and the Automation Account, removing the need for static credentials.
+
+ * ** Automated Response: Linked an Azure Automation Runbook to the Logic App. Upon alert, the system executes a PowerShell-based "Kill Switch" to isolate the host via the Arc management plane.
+
+![Power Shell Remediation Payload script](6.1-RemediationPayload.png)
+![SOAR WorkFlow Bridge](7-LogicAppDesigner.png)
+![Remediation Output](8-RemediationOutput.png)
