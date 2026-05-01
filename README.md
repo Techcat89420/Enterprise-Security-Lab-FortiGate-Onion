@@ -9,7 +9,7 @@ The primary technical achievement was engineering a **Layer 2 bypass** for hyper
 
 ---
 
-## The Architecture
+## Architecture
 
 ### 1. Networking (The Foundation)
 *   **Gateway:** FortiOS 7.x (FortiGate NGFW) managing the internal gateway (192.168.1.1).
@@ -88,3 +88,39 @@ Current topology showing the isolation between the Adversary Enclave (VMnet 1) a
 * **Cloud Uplink:** Finalize the Logstash-to-Sentinel pipeline to sync local telemetry with the Azure SecurityOnion_CL table.
 * **KQL Engineering:** Transition from "Hunting" in Security Onion to building custom Kusto Query Language (KQL) workbooks in Sentinel for long-term trend analysis.
 
+## Architecture Pivot: Logstash to Sentinel Native AMA
+* **The original plan focused on using Logstash for log forwarding. However, I pivoted to Azure Arc and the Azure Monitor Agent (AMA) for several technical reasons:
+Operational Efficiency: Azure Arc allows for direct VM management from the Azure portal. This removed the need to maintain a separate Linux Logstash server, simplifying the data path from on-prem to cloud.
+
+* **Cost & Noise Control: The AMA allows for Data Collection Rules (DCRs) and XPath filters to drop unnecessary logs at the source. This is more efficient than writing complex Logstash grok patterns and significantly reduces cloud ingestion costs.
+
+* **Security & Identity: I shifted to Managed Identities for authentication. This "passwordless" approach is more secure and avoided the API key expirations and tenant-mismatch issues encountered with Logstash plugins.
+
+## Phase 3: Hybrid-Cloud Uplink & SOAR Automation
+
+* **Executive Summary
+Phase 3 moves the lab from monitoring to active defense. By bridging the local EVE-NG environment to Azure Arc, I established a unified command plane. This setup enables global visibility and automated remediation (SOAR) on local hardware in under 60 seconds.
+
+### 1. Cloud Engineering (Uplink)
+* ** Azure Arc: Projected the Windows 11 VM into Azure as a managed resource. This provides cloud-native control over local infrastructure without the need for a VPN.
+  
+* ** Data Pipeline: Deployed the AMA and configured a Data Collection Rule.
+
+* ** XPath Filtering: Applied custom XPath (Microsoft-Windows-Sysmon/Operational!*) to prune noise. Only high-fidelity Sysmon events are sent to the Sentinel Event table, keeping data streams clean and cost effective.
+
+![Arc Status](1-ArcStatus.png)
+![DCR XPath](2-DCR-XPath.png)
+![Sentinel Log Ingestion](2.1-Sentinel-log.png)
+
+### 2. Detection Engineering (Intelligence)
+* ** Adversary Emulation: Ran a T1003 Credential Dump via Atomic Red Team to generate real attack telemetry.
+  
+* ** KQL Logic: Built a Kusto Query Language (KQL) rule to automate alerting.
+  
+* ** Regex Extraction: The KQL query uses regex to pull process names and user context from raw logs, turning simple data into high-severity security incidents.
+
+ ![T1003 Credential Dump](3-T1003-Credential-Dump.png)
+ ![Sysmon Local Alart](4-Sysmon-Local.png)
+ ![KQL-Analytics-Rule](5-KQL-Rule.png)
+ ![KQL-Overview](5.1-.png)
+ ![Detection Validation](6-Detection.png)
