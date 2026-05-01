@@ -130,7 +130,7 @@ Phase 3 moves the lab from monitoring to active defense. By bridging the local E
 
  * ** Identity & RBAC: Configured a System-Assigned Managed Identity with Contributor permissions. This secures the command path between Sentinel and the Automation Account, removing the need for static credentials.
 
- * ** Automated Response: Linked an Azure Automation Runbook to the Logic App. Upon alert, the system executes a PowerShell-based "Kill Switch" to isolate the host via the Arc management plane.
+ * ** Automated Response: Linked an Azure Automation Runbook to the Logic App. For this project, I engineered a non-destructive "Kill Switch" payload that generates a critical threat notice on the endpoint's desktop. This validated the end-to-end SOAR pipeline and cloud-to-local command execution without permanently severing the Azure Arc management bridge.
 
 ![Power Shell Remediation Payload script](6.1-RemediationPayload.png)
 ![SOAR WorkFlow Bridge](7-LogicAppDesigner.png)
