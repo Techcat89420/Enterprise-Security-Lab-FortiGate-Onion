@@ -142,6 +142,8 @@ Phase 3 moves the lab from monitoring to active defense. By bridging the local E
 ### Executive Summary
 Phase 4 covers the implementation and final testing of the automated incident response system. By connecting the on-premises lab to Azure Arc, I created a fast, reliable defense pipeline. This section explains how the live automation matrix is structured, the technical logic behind the deployment choices, and how the components work together to protect the network.
 
+![Lab Overview](Lab-Finale.png)
+
 ### 1. Automation Architecture & Technical Logic
 
 #### Machine Identities for Secure Authentication (Cloud Level)
@@ -192,4 +194,13 @@ The second playbook simultaneously passes the target containment command down th
 ![Dual-Console Host Verification (Event 4104 and Active Directory)](Dual-Console-Host-Verification-4-7.png)
 *Caption: Figure 4.7: Final verification on the Domain Controller. The local event logs record the incoming command from the cloud, and Active Directory shows the user account is completely disabled.*
 
+---
 
+### Project Conclusion
+This project successfully proves that an on-premises company network can use modern cloud tools to build a fast, automated defense system. 
+
+* **Fast, Automated Defense:** By connecting local servers directly to the cloud, the system drops the time to detect and stop a threat down to under 60 seconds.
+* **Smart Engineering:** Solving the local account issues proved that automated security tools can stop an attacker at the identity level before they move across the network.
+* **Cost and Efficiency:** Switching to direct cloud management rules removed the need for extra local servers and drastically cut down on unnecessary log noise, keeping cloud storage costs low.
+
+Ultimately, this lab serves as a real-world blueprint for transforming a passive monitoring setup into an active, automated containment network.
