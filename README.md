@@ -168,28 +168,28 @@ When an attack occurs on the Windows 11 host, Microsoft Sentinel initiates a sin
 Microsoft Sentinel captures the alert, generates a high-severity incident, and coordinates the simultaneous deployment of both defensive playbooks.
 
 ![Microsoft Sentinel Active Playbook Registry](Sentinel-Active-Playbook-Registry-4-1.png)
-*Figure 4.1: The active inventory showing both the alert and containment playbooks ready for deployment.*
+*Figure 4.1: Active inventory showing both the alert and containment playbooks ready for deployment.*
 
 ![Incident Automation Rule Action Linkage](Incident-Automation-Rule-Action-Linkage-4-2.png)
-*Figure 4.2: The master automation rule configured to run both playbooks simultaneously during an active incident.*
+*Figure 4.2: Mster automation rule configured to run both playbooks simultaneously during an active incident.*
 
 ![Unified Incident Hub Execution Telemetry](Unified-Incident-Hub-Execution-Telemetry-4-3.png)
-*Figure 4.3: The security dashboard tracking the successful, synchronized execution of both playbooks.*
+*Figure 4.3: Security dashboard tracking the successful, synchronized execution of both playbooks.*
 
 #### Step 2: User Communication (Compromised-Host-Arc)
 The first playbook sends a fast message down to the Windows 11 client host via an Azure Automation Runbook to visually alert the user that containment is underway.
 
 ![Compromised-Host-Arc Playbook Logic and Run History](Compromised-Host-Arc-4-4.png)
-*Figure 4.4: The history log proving the alert playbook completed its deployment task in under one second.*
+*Figure 4.4: History log proving the alert playbook completed its deployment task in under one second.*
 
 ![Host-Level Compromise Warning Notice Output](Warning-Notice-Output-4-5.png)
-*Figure 4.5: The forensic text document that automatically appears on the user's desktop to confirm machine containment.*
+*Figure 4.5: Forensic text document that automatically appears on the user's desktop to confirm machine containment.*
 
 #### Step 3: Identity Lockdown (SOAR-Killswitch-Account)
 The second playbook simultaneously passes the target containment command down through Azure Arc to the Domain Controller, shutting down the compromised identity across the entire domain.
 
 ![SOAR-Killswitch-Account Custom Resource Payload Mapping](SOAR-Killswitch-Account-4-6.png)
-*Figure 4.6: The playbook payload configuration displaying the direct account lockdown string command.*
+*Figure 4.6:Playbook payload configuration displaying the direct account lockdown string command.*
 
 ![Dual-Console Host Verification (Event 4104 and Active Directory)](Dual-Console-Host-Verification-4-7.png)
 *Figure 4.7: Final verification on the Domain Controller. The local event logs record the incoming command from the cloud, and Active Directory shows the user account is completely disabled.*
