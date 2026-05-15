@@ -186,10 +186,10 @@ The first playbook sends a fast message down to the Windows 11 client host via a
 #### Step 3: Identity Lockdown (`SOAR-Killswitch-Account`)
 The second playbook simultaneously passes the target containment command down through Azure Arc to the Domain Controller, shutting down the compromised identity across the entire domain.
 
-[SOAR-Killswitch-Account Custom Resource Payload Mapping](SOAR-Killswitch-Account-4-6.png)
+![SOAR-Killswitch-Account Custom Resource Payload Mapping](SOAR-Killswitch-Account-4-6.png)
 *Caption: Figure 4.6: The playbook payload configuration displaying the direct account lockdown string command.*
 
-[Dual-Console Host Verification (Event 4104 and Active Directory)](Dual-Console-Host-Verification-4-7.png)
+![Dual-Console Host Verification (Event 4104 and Active Directory)](Dual-Console-Host-Verification-4-7.png)
 *Caption: Figure 4.7: Final verification on the Domain Controller. The local event logs record the incoming command from the cloud, and Active Directory shows the user account is completely disabled.*
 
 
