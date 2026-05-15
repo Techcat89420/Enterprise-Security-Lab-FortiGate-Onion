@@ -176,7 +176,7 @@ Microsoft Sentinel captures the alert, generates a high-severity incident, and c
 ![Unified Incident Hub Execution Telemetry](Unified-Incident-Hub-Execution-Telemetry-4-3.png)
 *Figure 4.3: The security dashboard tracking the successful, synchronized execution of both playbooks.*
 
-#### Step 2: User Communication (`Compromised-Host-Arc`)
+#### Step 2: User Communication (Compromised-Host-Arc)
 The first playbook sends a fast message down to the Windows 11 client host via an Azure Automation Runbook to visually alert the user that containment is underway.
 
 ![Compromised-Host-Arc Playbook Logic and Run History](Compromised-Host-Arc-4-4.png)
@@ -185,7 +185,7 @@ The first playbook sends a fast message down to the Windows 11 client host via a
 ![Host-Level Compromise Warning Notice Output](Warning-Notice-Output-4-5.png)
 *Figure 4.5: The forensic text document that automatically appears on the user's desktop to confirm machine containment.*
 
-#### Step 3: Identity Lockdown (`SOAR-Killswitch-Account`)
+#### Step 3: Identity Lockdown (SOAR-Killswitch-Account)
 The second playbook simultaneously passes the target containment command down through Azure Arc to the Domain Controller, shutting down the compromised identity across the entire domain.
 
 ![SOAR-Killswitch-Account Custom Resource Payload Mapping](SOAR-Killswitch-Account-4-6.png)
