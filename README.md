@@ -136,3 +136,60 @@ Phase 3 moves the lab from monitoring to active defense. By bridging the local E
 ![Power Shell Remediation Payload script](6.1-RemediationPayload.png)
 ![SOAR WorkFlow Bridge](7-LogicAppDesigner.png)
 ![Remediation Output](8-RemediationOutput.png)
+
+## Phase 4: Production Optimization & Automated Containment Verification
+
+### Executive Summary
+Phase 4 covers the implementation and final testing of the automated incident response system. By connecting the on-premises lab to Azure Arc, I created a fast, reliable defense pipeline. This section explains how the live automation matrix is structured, the technical logic behind the deployment choices, and how the components work together to protect the network.
+
+### 1. Automation Architecture & Technical Logic
+
+#### Machine Identities for Secure Authentication (Cloud Level)
+*   **Goal**: Establish a secure, automated connection between Microsoft Sentinel and the on-premises lab infrastructure.
+*   **Implementation**: This was achieved by creating a dedicated corporate machine identity inside Azure named SOAR-Arc-Executor. By assigning this Service Principal identity directly to the root subscription scope, the automation playbooks can securely authenticate and execute administrative tasks without requiring manual or interactive user logins.
+
+#### Direct Resource Management Routing (Management Level)
+*   **Goal**: Ensure reliable delivery of cloud commands down to the local infrastructure without canvas saving locks or data truncation.
+*   **Implementation**: This was implemented by routing playbook actions directly through the Azure Resource Manager using an explicit Short Resource ID map.
+
+#### Native Account Containment Commands (Operating System Level)
+*   **Goal**: Lock down a compromised identity instantly while maintaining lab environment stability.
+*   **Implementation**: This was resolved by configuring the playbook to send a direct, native Windows command (net user SOAR-Test-Account /active:no) straight to the Domain Controller. Pushing a lightweight string directly to the Local Security Authority (LSA)  removes high-overhead script modules and avoids permission blocks tied to local system accounts, ensuring immediate containment.
+
+---
+
+### 2. Automated Defensive Flow (The End-to-End Execution)
+
+When an attack occurs on the Windows 11 host, Microsoft Sentinel initiates a single automation rule that triggers two playbooks concurrently to achieve total containment:
+
+#### Step 1: Ingestion and Coordination
+Microsoft Sentinel captures the alert, generates a high-severity incident, and coordinates the simultaneous deployment of both defensive playbooks.
+
+![Microsoft Sentinel Active Playbook Registry](Sentinel-Active-Playbook-Registry-4-1.png)
+*Caption: Figure 4.1: The active inventory showing both the alert and containment playbooks ready for deployment.*
+
+![Incident Automation Rule Action Linkage](Incident-Automation-Rule-Action-Linkage-4-2.png)
+*Caption: Figure 4.2: The master automation rule configured to run both playbooks simultaneously during an active incident.*
+
+![Unified Incident Hub Execution Telemetry](Unified-Incident-Hub-Execution-Telemetry-4-3.png)
+*Caption: Figure 4.3: The security dashboard tracking the successful, synchronized execution of both playbooks.*
+
+#### Step 2: User Communication (`Compromised-Host-Arc`)
+The first playbook sends a fast message down to the Windows 11 client host via an Azure Automation Runbook to visually alert the user that containment is underway.
+
+![Compromised-Host-Arc Playbook Logic and Run History](Compromised-Host-Arc-4-4.png)
+*Caption: Figure 4.4: The history log proving the alert playbook completed its deployment task in under one second.*
+
+![Host-Level Compromise Warning Notice Output](Warning-Notice-Output-4-5.png)
+*Caption: Figure 4.5: The forensic text document that automatically appears on the user's desktop to confirm machine containment.*
+
+#### Step 3: Identity Lockdown (`SOAR-Killswitch-Account`)
+The second playbook simultaneously passes the target containment command down through Azure Arc to the Domain Controller, shutting down the compromised identity across the entire domain.
+
+[SOAR-Killswitch-Account Custom Resource Payload Mapping](SOAR-Killswitch-Account-4-6.png)
+*Caption: Figure 4.6: The playbook payload configuration displaying the direct account lockdown string command.*
+
+[Dual-Console Host Verification (Event 4104 and Active Directory)](Dual-Console-Host-Verification-4-7.png)
+*Caption: Figure 4.7: Final verification on the Domain Controller. The local event logs record the incoming command from the cloud, and Active Directory shows the user account is completely disabled.*
+
+
